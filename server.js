@@ -45,8 +45,8 @@ app.get("/visitors", (req, res) => {
     if (visitor) {
       const reservationPast = reservations.find((reservation) => parseInt(reservation.id) === (parseInt(visitor.pastReservations)));
       const reservationUp = reservations.find((reservation) => parseInt(reservation.id) === parseInt(visitor.pastReservations));
-      console.log(reservationPast,reservationUp);
-      res.status(200).json({...visitor, name: visitor.name, pastReservations: reservationPast, upcomingReservations: reservationUp});
+      // console.log(reservationPast,reservationUp);
+      res.status(200).json({...visitor, name: visitor.name, pastReservations: [reservationPast], upcomingReservations: [reservationUp]});
     } else {
       res.status(400).json("ID provided is not available");
     }
